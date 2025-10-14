@@ -5,10 +5,18 @@ from typing import List
 from sqlmodel import SQLModel, select, Session
 from models import Employee
 from db import engine, get_session
+# Added import
+from fastapi.middleware.cors import CORSMiddleware
 
 log = logging.getLogger("uvicorn.error")
 
 app = FastAPI(title="L&D SaaS API (dev)")
+
+origins = [
+    "http://cs8owoggggko888wsgswcww4.167.86.97.226.sslip.io",
+    "https://cs8owoggggko888wsgswcww4.167.86.97.226.sslip.io",
+    "http://localhost:5173",  # for local dev
+]
 
 app.add_middleware(
     CORSMiddleware,
