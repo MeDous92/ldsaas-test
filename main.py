@@ -5,8 +5,6 @@ from typing import List
 from sqlmodel import SQLModel, select, Session
 from models import Employee
 from db import engine, get_session
-# Added import
-from fastapi.middleware.cors import CORSMiddleware
 
 log = logging.getLogger("uvicorn.error")
 
