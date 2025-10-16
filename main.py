@@ -10,15 +10,11 @@ log = logging.getLogger("uvicorn.error")
 
 app = FastAPI(title="L&D SaaS API (dev)")
 
-origins = [
-    "http://cs8owoggggko888wsgswcww4.167.86.97.226.sslip.io",
-    "https://cs8owoggggko888wsgswcww4.167.86.97.226.sslip.io",
-    "http://localhost:5173",  # for local dev
-]
+FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:5173")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=[FRONTEND_URL],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
